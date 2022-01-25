@@ -1,0 +1,19 @@
+apply plugin: 'java'
+
+task wrapper1(type: Wrapper){
+    gradleVersion ='4.4' //gradle版本
+    archiveBase 'PROJECT' //下载gradle存放的位置（PROJECT 项目根目录，GRADLE_USER_HOME gradle 环境变量目录）
+    archivePath 'gradle/zipDists' //下载gradle子目录
+    distributionBase 'PROJECT' //解压gradle存放的位置
+    distributionPath 'gradle/distributionDists' //解压gradle子目录
+    distributionType 'ALL' // All 完整 BIN 不包括源码包
+}
+
+//task wrapper1(type: Wrapper){
+//    gradleVersion '4.1'
+//    archiveBase 'PROJECT'
+//    archivePath 'wrapper/zipDists'
+//    distributionBase 'PROJECT'
+//    distributionPath 'wrapper/distributionDists'
+//    distributionType 'ALL'
+//}
