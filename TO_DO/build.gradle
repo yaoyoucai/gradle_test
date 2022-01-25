@@ -1,5 +1,8 @@
 apply plugin: 'java'
 
+version = 1.2 //jar包版本
+sourceCompatibility = 1.8 //指定编译项目的java版本
+
 task wrapper1(type: Wrapper){
     gradleVersion ='4.4' //gradle版本
     archiveBase 'PROJECT' //下载gradle存放的位置（PROJECT 项目根目录，GRADLE_USER_HOME gradle 环境变量目录）
@@ -7,13 +10,12 @@ task wrapper1(type: Wrapper){
     distributionBase 'PROJECT' //解压gradle存放的位置
     distributionPath 'gradle/distributionDists' //解压gradle子目录
     distributionType 'ALL' // All 完整 BIN 不包括源码包
+    distributionUrl 'https://mirrors.cloud.tencent.com/gradle/gradle-4.4-all.zip' //如果遇到无法下载的情况，可以直接指定镜像
 }
 
-//task wrapper1(type: Wrapper){
-//    gradleVersion '4.1'
-//    archiveBase 'PROJECT'
-//    archivePath 'wrapper/zipDists'
-//    distributionBase 'PROJECT'
-//    distributionPath 'wrapper/distributionDists'
-//    distributionType 'ALL'
-//}
+//指定Main函数入口
+jar {
+    manifest{
+        attributes 'Main-Class': 'com.test.Test',
+                    'aa':'bb'}
+}
